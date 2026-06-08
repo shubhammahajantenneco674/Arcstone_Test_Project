@@ -1,9 +1,14 @@
 {
-  "name": "demand-management-app",
-  "displayName": "Demand Management App",
+  "name": "Demand Management App",
   "version": "1.0.0",
-  "description": "Basic JavaScript demand management application bundle with dummy APIs.",
-  "entryPoint": "server.js",
-  "platform": "nodejs",
-  "port": 3000
+  "entrypoint": "index.html",
+  "spa": false,
+  "sdk": "1.0",
+  "requireAuth": false,
+  "permissions": {
+    "definitions": [],
+    "required": [],
+    "optional": []
+  },
+  "csp": {}
 }

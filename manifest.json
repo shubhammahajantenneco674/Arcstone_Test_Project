@@ -1,14 +1,9 @@
+
 {
-  "name": "Demand Management App",
+  "name": "demand-management-app",
   "version": "1.0.0",
-  "entrypoint": "index.html",
+  "entry": "index.html",
+  "type": "static",
   "spa": false,
-  "sdk": "1.0",
-  "requireAuth": false,
-  "permissions": {
-    "definitions": [],
-    "required": [],
-    "optional": []
-  },
-  "csp": {}
+  "requiresAuth": false
 }

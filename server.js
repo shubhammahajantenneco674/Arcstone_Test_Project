@@ -10,7 +10,7 @@ app.use(express.json());
 app.get("/api/dashboard-summary", async (req, res) => {
   try {
     const response = await fetch(
-      "http://10.131.24.96/arc.flow.STANDARD/workflows/custom/demand-dashboard-overview/api/summary"
+      "http://10.131.24.96/arc.flow.STANDARD/workflows/custom/demand-dashboard-overview"
     );
 
     if (!response.ok) {

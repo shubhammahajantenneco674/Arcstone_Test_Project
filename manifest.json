@@ -1,0 +1,9 @@
+{
+  "name": "demand-management-app",
+  "displayName": "Demand Management App",
+  "version": "1.0.0",
+  "description": "Basic JavaScript demand management application bundle with dummy APIs.",
+  "entryPoint": "server.js",
+  "platform": "nodejs",
+  "port": 3000
+}

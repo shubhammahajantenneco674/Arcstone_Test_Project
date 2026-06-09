@@ -1,115 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Demand Management</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <title>Demand Management Dashboard</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="page">
-    <header class="header">
-      <div>
-        <h1>Demand Management Dashboard</h1>
-        <p>Basic JavaScript application with dummy APIs to fetch and display demand data.</p>
-      </div>
-      <button id="refreshBtn" class="btn secondary">Refresh Data</button>
-    </header>
+  <h1>Demand Management Dashboard</h1>
 
-    <section class="cards" id="summaryCards">
-      <div class="card"><span>Total</span><strong id="totalCount">0</strong></div>
-      <div class="card"><span>New</span><strong id="newCount">0</strong></div>
-      <div class="card"><span>In Progress</span><strong id="inProgressCount">0</strong></div>
-      <div class="card"><span>Approved</span><strong id="approvedCount">0</strong></div>
-      <div class="card"><span>Completed</span><strong id="completedCount">0</strong></div>
-      <div class="card highlight"><span>High/Critical</span><strong id="highPriorityCount">0</strong></div>
-    </section>
-
-    <section class="panel filters-panel">
-      <div class="filters">
-        <input id="searchInput" type="text" placeholder="Search by title, BU, or owner" />
-        <select id="statusFilter">
-          <option value="All">All Statuses</option>
-          <option value="New">New</option>
-          <option value="In Progress">In Progress</option>
-          <option value="Approved">Approved</option>
-          <option value="Completed">Completed</option>
-        </select>
-        <select id="priorityFilter">
-          <option value="All">All Priorities</option>
-          <option value="Low">Low</option>
-          <option value="Medium">Medium</option>
-          <option value="High">High</option>
-          <option value="Critical">Critical</option>
-        </select>
-        <button id="applyFiltersBtn" class="btn">Apply Filters</button>
-      </div>
-    </section>
-
-    <section class="grid">
-      <section class="panel">
-        <div class="panel-header">
-          <h2>Demands</h2>
-          <span id="recordCount">0 records</span>
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Title</th>
-                <th>Business Unit</th>
-                <th>Owner</th>
-                <th>Priority</th>
-                <th>Status</th>
-                <th>Effort (Days)</th>
-                <th>Due Date</th>
-              </tr>
-            </thead>
-            <tbody id="demandTableBody"></tbody>
-          </table>
-        </div>
-      </section>
-
-      <section class="panel">
-        <div class="panel-header">
-          <h2>Add New Demand</h2>
-        </div>
-        <form id="demandForm" class="form">
-          <label>Title<input type="text" id="title" required /></label>
-          <label>Business Unit<input type="text" id="businessUnit" required /></label>
-          <label>Owner<input type="text" id="owner" required /></label>
-          <label>Priority
-            <select id="priority" required>
-              <option value="">Select</option>
-              <option value="Low">Low</option>
-              <option value="Medium">Medium</option>
-              <option value="High">High</option>
-              <option value="Critical">Critical</option>
-            </select>
-          </label>
-          <label>Status
-            <select id="status" required>
-              <option value="">Select</option>
-              <option value="New">New</option>
-              <option value="In Progress">In Progress</option>
-              <option value="Approved">Approved</option>
-              <option value="Completed">Completed</option>
-            </select>
-          </label>
-          <label>Effort (Days)<input type="number" id="effortDays" min="1" required /></label>
-          <label>Due Date<input type="date" id="dueDate" required /></label>
-          <button type="submit" class="btn">Add Demand</button>
-          <p id="formMessage" class="form-message"></p>
-        </form>
-
-        <div class="owners-box">
-          <h3>Available Owners (Dummy API)</h3>
-          <ul id="ownersList"></ul>
-        </div>
-      </section>
-    </section>
+  <div class="dashboard">
+    <div class="card">Total: <span id="totalCount">0</span></div>
+    <div class="card">New: <span id="newCount">0</span></div>
+    <div class="card">In Progress: <span id="inProgressCount">0</span></div>
+    <div class="card">Approved: <span id="approvedCount">0</span></div>
+    <div class="card">Completed: <span id="completedCount">0</span></div>
   </div>
+
+  <div class="role">Role: <span id="roleCount">N/A</span></div>
+
+  <button id="refreshBtn">Refresh</button>
 
   <script src="app.js"></script>
 </body>

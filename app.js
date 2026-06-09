@@ -1,59 +1,34 @@
-const API_URL = "/api/dashboard-summary";
+const API_URL = "http://10.131.24.96/arc.flow.STANDARD/workflows/custom/demand-dashboard-overview/api/summary";
 
 const summaryElements = {
   total: document.getElementById("totalCount"),
   newCount: document.getElementById("newCount"),
   inProgressCount: document.getElementById("inProgressCount"),
   approvedCount: document.getElementById("approvedCount"),
-  completedCount: document.getElementById("completedCount"),
-  highPriorityCount: document.getElementById("highPriorityCount")
+  completedCount: document.getElementById("completedCount")
 };
 
 const roleElement = document.getElementById("roleCount");
 const refreshButton = document.getElementById("refreshBtn");
 
-async function fetchJson(url, options = {}) {
-  const response = await fetch(url, options);
-
-  if (!response.ok) {
-    let errorMessage = "Request failed";
-    try {
-      const error = await response.json();
-      errorMessage = error.message || errorMessage;
-    } catch {
-      // Ignore JSON parse error
-    }
-    throw new Error(errorMessage);
-  }
-
-  return await response.json();
-}
-
 async function loadSummary() {
   try {
-    const summary = await fetchJson(API_URL);
+    const response = await fetch(API_URL);
+    const data = await response.json();
 
-    summaryElements.total.textContent = summary.Total || 0;
-    summaryElements.newCount.textContent = summary.New || 0;
-    summaryElements.inProgressCount.textContent = summary["In Progress"] || 0;
-    summaryElements.approvedCount.textContent = summary.Approved || 0;
-    summaryElements.completedCount.textContent = summary.Completed || 0;
+    summaryElements.total.textContent = data.Total || 0;
+    summaryElements.newCount.textContent = data.New || 0;
+    summaryElements.inProgressCount.textContent = data["In Progress"] || 0;
+    summaryElements.approvedCount.textContent = data.Approved || 0;
+    summaryElements.completedCount.textContent = data.Completed || 0;
 
-    if (summaryElements.highPriorityCount) {
-      summaryElements.highPriorityCount.textContent = 0;
-    }
+    roleElement.textContent = data.role || "N/A";
 
-    if (roleElement) {
-      roleElement.textContent = summary.role || "N/A";
-    }
   } catch (error) {
-    console.error("Error loading summary:", error);
-    alert(`Unable to load dashboard data: ${error.message}`);
+    console.error(error);
+    alert("Error loading dashboard data");
   }
 }
 
-if (refreshButton) {
-  refreshButton.addEventListener("click", loadSummary);
-}
-
+refreshButton.addEventListener("click", loadSummary);
 loadSummary();
